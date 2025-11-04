@@ -2,7 +2,7 @@ const Booking = require('../models/bookingModel');
 
 
 //aftermaking sure hall is available
-const makeBooking = async (req,res) => {
+const makeBooking = async (req,res,next) => {
     try{
     const {hallName,startDateTime,endDateTime} = req.body;
     const {name,email} = req.user;
@@ -14,10 +14,8 @@ const makeBooking = async (req,res) => {
         endDateTime
     })
 
-    return res.status(200).json({
-    message: `Booking made successfully. Booking ID: ${booking._id}`,
-    booking,
-});
+    console.log("booking confirmed");
+    next();
     }
     catch(error){
         console.log(req.user);

@@ -19,7 +19,7 @@ const checkAvailability = async (req,res,next) => {
         console.log(" Booking conflict detected");
         return res
         .status(401)
-        .json({message:`${hallName} is already booked for ${startDateTime} to ${endDateTime}`});
+        .json({message:`${hallName} is already booked for ${overlappingBooking.startDateTime} to ${overlappingBooking.endDateTime}`});
     }
 
     //no overlap
